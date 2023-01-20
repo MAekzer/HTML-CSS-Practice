@@ -1,4 +1,5 @@
 using System.IO;
+using System.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +33,14 @@ namespace LifeSpot
                     var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
                     var html = await File.ReadAllTextAsync(viewPath);
                     await context.Response.WriteAsync(html);
+                });
+
+                endpoints.MapGet("/Static/CSS/styles.css", async context =>
+                {
+                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
+                    var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", "styles.css");
+                    var css = await File.ReadAllTextAsync(cssPath);
+                    await context.Response.WriteAsync(css);
                 });
             });
         }
