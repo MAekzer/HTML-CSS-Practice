@@ -2,56 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LifeSpot</title>
     <link href="/Static/CSS/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="/Static/JS/script.js"></script>
+    <script>
+        //let session = handleSession();
+        //logSession(session);
+    </script>
 </head>
 <body>
-    <header>
-        <!--Заголовок страницы-->
-        <h1>LifeSpot - прямые трансляции с улиц</h1>
-        <!--Параграф-->
-        <p>Покажем, что происходит прямо сейчас</p>
-    </header>
-    <main>
-        <div class="searchfield">
-            <label for="search">Хотите найти какую-то конкретную трансляцию?</label>
-            <div>
-                <input id="search" type="text" name="search" />
-                <button type="button" name="search">Поиск</button>
-            </div>
+    <div id="page-container">
+        <div id="content-wrap">
+            <header>
+                <!--Заголовок страницы-->
+                <h1>LifeSpot - прямые трансляции с улиц</h1>
+                <!--Параграф-->
+                <p>Покажем, что происходит прямо сейчас</p>
+            </header>
+            <main>
+                <div class="searchfield">
+                    <label for="search">Хотите найти какую-то конкретную трансляцию?</label>
+                    <div>
+                        <input id="search" type="text" name="search" oninput="filterContent()" />
+                        <button type="button" name="search">Поиск</button>
+                    </div>
+                </div>
+                <!--SIDEBAR-->
+                <div class="flexbox">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/1-iS7LArMPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h3 class="video-title">Нью-Йорк, Таймс Сквер</h3>
+                    </div>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/e3IGUhlmXMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h3 class="video-title">Санкт-Петербург, Невский Проспект</h3>
+                    </div>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/V00D4K9OshI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h3 class="video-title">Лондон, автобусный маршрут</h3>
+                    </div>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/cH7VBI4QQzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h3 class="video-title">Прогулка по улицам Токио</h3>
+                    </div>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/vvOjJoSEFM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h3 class="video-title">Лос-Анджелес, Венецианский пляж</h3>
+                    </div>
+                </div>
+            </main>
         </div>
-        <aside id="sidebar">
-            <div class="navbar">
-                <a href="/"><p>Все трансляции</p></a>
-                <a href="/"><p>О проекте</p></a>
-            </div>
-        </aside>
-        <div class="flexbox">
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/1-iS7LArMPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <h3 class="video-title">Нью-Йорк, Таймс Сквер</h3>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/e3IGUhlmXMs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <h3 class="video-title">Санкт-Петербург, Невский Проспект</h3>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/V00D4K9OshI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <h3 class="video-title">Лондон, автобусный маршрут</h3>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cH7VBI4QQzA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <h3 class="video-title">Прогулка по улицам Токио</h3>
-            </div>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/vvOjJoSEFM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <h3 class="video-title">Лос-Анджелес, Венецианский пляж</h3>
-            </div>
+            <!--FOOTER-->
         </div>
-    </main>
-    <footer>
-        <p>LifeSpot - все права защищены</p>
-        <p>Связаться с нами: contact@lifespot.ru</p>
-    </footer>
 </body>
 </html>
