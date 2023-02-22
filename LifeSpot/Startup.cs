@@ -1,11 +1,8 @@
-using System.IO;
-using System.Net;
-using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace LifeSpot
 {
@@ -32,60 +29,10 @@ namespace LifeSpot
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
-                    var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-                       .Replace("<!--SIDEBAR-->", sideBarHtml)
-                       .Replace("<!--FOOTER-->", footerHtml);
-                    await context.Response.WriteAsync(html.ToString());
-                });
-
-                endpoints.MapGet("/testing", async context =>
-                {
-                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "testing.html");
-
-                    // Загружаем шаблон страницы, вставляя в него элементы
-                    var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-                        .Replace("<!--SIDEBAR-->", sideBarHtml)
-                        .Replace("<!--FOOTER-->", footerHtml);
-
-                    await context.Response.WriteAsync(html.ToString());
-                });
-
-                endpoints.MapGet("/about", async context =>
-                {
-                    var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "about.html");
-
-                    // Загружаем шаблон страницы, вставляя в него элементы
-                    var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-                        .Replace("<!--SIDEBAR-->", sideBarHtml)
-                        .Replace("<!--FOOTER-->", footerHtml);
-
-                    await context.Response.WriteAsync(html.ToString());
-                });
-
-                endpoints.MapGet("/Static/CSS/styles.css", async context =>
-                {
-                    // по аналогии со страницей Index настроим на нашем сервере путь до страницы со стилями, чтобы браузер знал, откуда их загружать
-                    var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", "styles.css");
-                    var css = await File.ReadAllTextAsync(cssPath);
-                    await context.Response.WriteAsync(css);
-                });
-
-                endpoints.MapGet("/Static/JS/script.js", async context =>
-                {
-                    var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "script.js");
-                    var js = await File.ReadAllTextAsync(jsPath);
-                    await context.Response.WriteAsync(js);
-                });
-
-                endpoints.MapGet("/Static/JS/about.js", async context =>
-                {
-                    var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "about.js");
-                    var js = await File.ReadAllTextAsync(jsPath);
-                    await context.Response.WriteAsync(js);
-                });
+                endpoints.MapCss();
+                endpoints.MapJs();
+                endpoints.MapHtml();
+                endpoints.MapJpg();
             });
         }
     }

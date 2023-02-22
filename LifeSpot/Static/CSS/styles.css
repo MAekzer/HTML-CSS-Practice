@@ -1,4 +1,7 @@
-﻿
+﻿* {
+    box-sizing: border-box;
+}
+
 
 #page-container {
     position: relative;
@@ -21,6 +24,11 @@
     padding-left: 15%;
 }
 
+.slider {
+    border: 3px solid black;
+    margin: 40px auto !important;
+}
+
 .searchfield {
     display: flex;
     justify-content: center;
@@ -28,6 +36,24 @@
     flex-direction: column;
     margin: 1.5% auto;
 }
+
+.like {
+    font-size: 1em;
+    height: 1.9em;
+    width: 3em;
+    border: 1px solid black;
+    border-radius: 45%;
+    padding: 0;
+}
+
+    .like:hover {
+        cursor: pointer;
+        background-color: #aaa;
+    }
+
+    .like:active {
+        background-color: #ddd;
+    }
 
 label {
     display: block;
